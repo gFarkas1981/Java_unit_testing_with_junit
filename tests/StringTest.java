@@ -1,4 +1,6 @@
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -38,6 +40,23 @@ public class StringTest {
         int actualLength = "ABCD".length();
         int expectedLength = 4;
         assertEquals(expectedLength, actualLength);
+
+    }
+
+    @Test
+    void lengthGreaterThanZero() {
+
+        assertTrue("ABCD".length() > 0);
+        assertTrue("ABC".length() > 0);
+        assertTrue("A".length() > 0);
+        assertTrue("DEF".length() > 0);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"ABCD", "", "ABC", "A", "DEF"})
+    void lengthGreaterThanZeroUsingParameterizedTest(String string) {
+
+        assertTrue(string.length() > 0);
 
     }
 
