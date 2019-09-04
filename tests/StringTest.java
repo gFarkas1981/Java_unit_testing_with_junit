@@ -9,6 +9,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class StringTest {
 
+    private String string;
+
     @BeforeAll
     static void beforeAll() {
 
@@ -132,6 +134,35 @@ public class StringTest {
                 }
 
         );
+
+    }
+
+    @Nested
+    @DisplayName("For an empty String")
+    class EmptyStringTests {
+
+        @BeforeEach
+        void setToEmpty() {
+
+            string = "";
+
+        }
+
+        @Test
+        @DisplayName("Length should be zero")
+        void lengthIsZero() {
+
+            assertEquals(0, string.length());
+
+        }
+
+        @Test
+        @DisplayName("Uppercase is empty")
+        void upperCaseIsEmpty() {
+
+            assertEquals("", string.toUpperCase());
+
+        }
 
     }
 
