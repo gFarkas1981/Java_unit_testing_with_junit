@@ -1,7 +1,6 @@
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class StringTest {
 
@@ -27,10 +26,18 @@ public class StringTest {
     @Test
     void contains_basic() {
 
-        String string = "abcdefgh";
-        boolean result = string.contains("ijk");
+        assertFalse("abcdefgh".contains("ijk"));
 
-        assertFalse(result);
+    }
+
+    @Test
+    void split_basic() {
+
+        String string = "abc def ghi";
+        String actualResult[] = string.split(" ");
+        String[] expectedResult = new String[]{"abc25", "def", "ghi"};
+
+        assertArrayEquals(expectedResult, actualResult);
 
     }
 
