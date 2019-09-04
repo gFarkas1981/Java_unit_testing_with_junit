@@ -1,8 +1,25 @@
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInfo;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class StringTest {
+
+    @BeforeEach
+    void beforeEach(TestInfo info) {
+
+        System.out.println("Initialise Test Data for " + info.getDisplayName());
+
+    }
+
+    @AfterEach
+    void afterEach() {
+
+        System.out.println("Clean up Test Data");
+
+    }
 
     @Test
     void length_basic() {
@@ -35,7 +52,7 @@ public class StringTest {
 
         String string = "abc def ghi";
         String actualResult[] = string.split(" ");
-        String[] expectedResult = new String[]{"abc25", "def", "ghi"};
+        String[] expectedResult = new String[]{"abc", "def", "ghi"};
 
         assertArrayEquals(expectedResult, actualResult);
 
