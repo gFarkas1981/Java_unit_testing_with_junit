@@ -96,6 +96,7 @@ public class StringTest {
     }
 
     @Test
+    @RepeatedTest(10)
     void contains_basic() {
 
         assertFalse("abcdefgh".contains("ijk"));
