@@ -117,6 +117,7 @@ public class StringTest {
     }
 
     @Test
+    @Disabled
     void performanceTest() {
 
         assertTimeout(Duration.ofSeconds(5),
