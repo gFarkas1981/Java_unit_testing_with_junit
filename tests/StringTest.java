@@ -44,7 +44,7 @@ public class StringTest {
 
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "UpperCase value of `{0}` is `{1}`")
     @CsvSource(value = {"abcd, ABCD", "abc, ABC", "'',''", "abcdefg, ABCDEFG"})
     void upperCase(String word, String capitalizedWord) {
 
@@ -52,7 +52,7 @@ public class StringTest {
 
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "Expected length of `{0}` is `{1}`")
     @CsvSource(value = {"abcd, 4", "abc, 3", "'', 0", "abcdefg, 7"})
     void length(String word, int expectedLength) {
 
