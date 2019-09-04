@@ -3,6 +3,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.time.Duration;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class StringTest {
@@ -111,6 +113,24 @@ public class StringTest {
         String[] expectedResult = new String[]{"abc", "def", "ghi"};
 
         assertArrayEquals(expectedResult, actualResult);
+
+    }
+
+    @Test
+    void performanceTest() {
+
+        assertTimeout(Duration.ofSeconds(5),
+
+                () -> {
+
+                    for (int i = 0; i < 5000; i++) {
+                        int j = i;
+                        System.out.println(j);
+                    }
+
+                }
+
+        );
 
     }
 
