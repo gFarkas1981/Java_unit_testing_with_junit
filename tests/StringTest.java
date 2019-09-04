@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -43,17 +44,24 @@ public class StringTest {
 
     }
 
-    @Test
-    void lengthGreaterThanZero() {
+    @ParameterizedTest
+    @CsvSource(value = {"abcd, ABCD", "abc, ABC", "'',''", "abcdefg, ABCDEFG"})
+    void upperCase(String word, String capitalizedWord) {
 
-        assertTrue("ABCD".length() > 0);
-        assertTrue("ABC".length() > 0);
-        assertTrue("A".length() > 0);
-        assertTrue("DEF".length() > 0);
+        assertEquals(capitalizedWord, word.toUpperCase());
+
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"ABCD", "", "ABC", "A", "DEF"})
+    @CsvSource(value = {"abcd, 4", "abc, 3", "'', 0", "abcdefg, 7"})
+    void length(String word, int expectedLength) {
+
+        assertEquals(expectedLength, word.length());
+
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"ABCD", "B", "ABC", "A", "DEF"})
     void lengthGreaterThanZeroUsingParameterizedTest(String string) {
 
         assertTrue(string.length() > 0);
